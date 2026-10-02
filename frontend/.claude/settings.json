@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(ls /Users/ayaka/code/ayakakikuchi-222/tiny-time/)",
+      "Read(//Users/ayaka/code/ayakakikuchi-222/tiny-time/**)",
+      "Bash(git -C .. rev-parse --show-toplevel)"
     ]
   }
 }
