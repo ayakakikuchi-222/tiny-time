@@ -1,0 +1,702 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #17166f;
+
+  background:
+    radial-gradient(
+      circle at 15% 12%,
+      rgba(153, 142, 255, 0.32),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(255, 214, 238, 0.3),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 25% 90%,
+      rgba(255, 231, 195, 0.32),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #ebe9ff 0%,
+      #f8f6ff 45%,
+      #fff7f1 100%
+    );
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 48px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-card {
+  width: min(100%, 720px);
+  min-height: 860px;
+
+  padding: 56px;
+
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 56px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(246, 243, 255, 0.66)
+    );
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 30px 80px rgba(81, 70, 180, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+h1 {
+  margin: 0;
+
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+
+  color: #181474;
+}
+
+.tagline {
+  margin: 12px 0 0;
+
+  font-size: 1rem;
+  color: #9795cc;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step-count {
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  box-shadow: 0 8px 30px rgba(86, 75, 175, 0.08);
+
+  font-weight: 700;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: #dedcf7;
+}
+
+.dot.active {
+  background: #7667f4;
+}
+
+.dot.completed {
+  background: #aaa2f6;
+}
+
+.question-section {
+  margin-top: 92px;
+}
+
+.question-section h2 {
+  margin: 0;
+
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  color: #17166f;
+}
+
+.question-subtitle {
+  margin: 18px 0 0;
+
+  font-size: 1.1rem;
+
+  color: #9a98cb;
+}
+
+.option-list {
+  margin-top: 48px;
+
+  display: grid;
+  gap: 22px;
+}
+
+.option-card {
+  width: 100%;
+  min-height: 150px;
+
+  padding: 24px 34px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(248, 245, 255, 0.76)
+    );
+
+  color: #181474;
+
+  font-size: 1.9rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 16px 40px rgba(89, 78, 177, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.option-card:hover {
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(243, 238, 255, 0.9)
+    );
+
+  box-shadow:
+    0 22px 50px rgba(89, 78, 177, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.option-card:active {
+  transform: scale(0.985);
+}
+
+.option-icon {
+  width: 92px;
+  height: 92px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #f4ddff,
+      #e5e0ff 60%,
+      #dce6ff 100%
+    );
+
+  font-size: 3rem;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 12px 28px rgba(105, 91, 201, 0.12);
+}
+
+/* Location: 横に3枚並べ、カードの中は縦に積む */
+.location-list {
+  /* minmax(0, 1fr) で、長い文字があっても3列を同じ幅に保つ */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.location-card {
+  min-height: 0;
+  padding: 20px 12px 24px;
+
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+
+  font-size: 1.4rem;
+}
+
+.location-icon {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin-bottom: 6px;
+
+  /* 画像自体に背景があるので、四角の背景は消す */
+  background: none;
+  box-shadow: none;
+}
+
+.location-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.option-sub {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #9a98cb;
+}
+
+@media (max-width: 560px) {
+  .app-card {
+    padding: 32px 20px;
+  }
+
+  .location-list {
+    gap: 10px;
+  }
+
+  .location-card {
+    padding: 14px 6px 18px;
+    border-radius: 24px;
+    font-size: 1.05rem;
+  }
+
+  .option-sub {
+    font-size: 0.75rem;
+  }
+}
+
+.result-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(139, 127, 255, 0.32),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 201, 204, 0.28),
+      transparent 40%
+    ),
+    #faf8ff;
+}
+
+.result-container {
+  width: 100%;
+  max-width: 760px;
+  min-height: 860px;
+
+  padding: 56px 60px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 56px;
+
+  box-shadow:
+    0 30px 70px rgba(68, 57, 150, 0.12);
+
+  backdrop-filter: blur(20px);
+}
+
+/* ----------------
+   Header
+---------------- */
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  margin: 0;
+
+  color: #211b82;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+/* ロゴ画像の高さだけ決めて、幅は縦横比に合わせて自動にする */
+.logo img {
+  display: block;
+  height: 64px;
+  width: auto;
+  max-width: 100%;
+}
+
+.tagline {
+  margin-top: 4px;
+
+  color: #918bd3;
+  font-size: 1rem;
+}
+
+.result-complete {
+  padding: 10px 18px;
+
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+
+  color: #211b82;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 20px rgba(79, 66, 167, 0.08);
+}
+
+/* ----------------
+   Main content
+---------------- */
+
+.result-content {
+  margin-top: 90px;
+}
+
+.result-title-area h2 {
+  margin: 0;
+
+  color: #211b82;
+
+  font-size: clamp(2.7rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.result-title-area p {
+  margin-top: 18px;
+
+  color: #9691cf;
+
+  font-size: 1.05rem;
+}
+
+/* ----------------
+   Small summary
+---------------- */
+
+.choice-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 32px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 13px;
+
+  background: rgba(239, 237, 255, 0.8);
+
+  border-radius: 999px;
+
+  color: #7771ba;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+.summary-item svg {
+  font-size: 0.75rem;
+  color: #8e83f4;
+}
+
+/* ----------------
+   Activity
+---------------- */
+
+.activity-area {
+  margin-top: 28px;
+}
+
+.activity-card {
+  position: relative;
+
+  min-height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 44px 40px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(247, 244, 255, 0.92)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 34px;
+
+  box-shadow:
+    0 25px 60px rgba(66, 52, 160, 0.14);
+}
+
+.activity-card::before {
+  content: "";
+
+  position: absolute;
+  inset: -1px;
+
+  z-index: -1;
+
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(157, 141, 255, 0.2),
+      rgba(255, 200, 220, 0.25)
+    );
+
+  filter: blur(16px);
+}
+
+.activity-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 16px;
+
+  color: #7668ee;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eeeaff,
+      #fff0f7
+    );
+
+  font-size: 1.2rem;
+}
+
+.activity-eyebrow {
+  margin: 0 0 12px;
+
+  color: #9791c9;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.activity-card h3 {
+  max-width: 520px;
+
+  margin: 0;
+
+  color: #211b82;
+
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.activity-caption {
+  margin: 18px 0 0;
+
+  color: #9c97ca;
+
+  font-size: 0.95rem;
+}
+
+.loading-card {
+  min-height: 260px;
+}
+
+.loading-text {
+  margin: 0;
+
+  color: #211b82;
+
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.loading-text svg {
+  margin-left: 5px;
+}
+
+/* ----------------
+   Error
+---------------- */
+
+.result-error {
+  padding: 24px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 235, 240, 0.9);
+
+  color: #a94f68;
+
+  text-align: center;
+}
+
+/* ----------------
+   Restart
+---------------- */
+
+.restart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin: 30px auto 0;
+
+  padding: 13px 22px;
+
+  background: transparent;
+
+  border: 1px solid #d7d2f5;
+  border-radius: 999px;
+
+  color: #6760ad;
+
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(242, 239, 255, 0.9);
+
+  border-color: #bbb3ec;
+}
+
+/* ----------------
+   Mobile
+---------------- */
+
+@media (max-width: 700px) {
+  .result-page {
+    padding: 20px 14px;
+    align-items: flex-start;
+  }
+
+  .result-container {
+    min-height: calc(100vh - 40px);
+
+    padding: 36px 26px;
+
+    border-radius: 36px;
+  }
+
+  .logo {
+    font-size: 2.4rem;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+
+  .result-content {
+    margin-top: 72px;
+  }
+
+  .result-title-area h2 {
+    font-size: 2.7rem;
+  }
+
+  .activity-card {
+    padding: 38px 24px;
+  }
+
+  .activity-card h3 {
+    font-size: 2.2rem;
+  }
+}

@@ -163,9 +163,10 @@ def get_activity(location: str, energy: str, goal: str):
     for activity in ACTIVITIES:
         if (
             location in activity["location"]
-            and activity["energy"] == energy
-            and (goal == "I don't know" or activity["goal"] == goal)
+            and energy in activity["energy"]
+            and goal in activity["goal"]
         ):
+
             return activity
 
     raise HTTPException(status_code=404, detail="No matching activity")
